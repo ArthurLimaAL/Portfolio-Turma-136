@@ -1,0 +1,1044 @@
+:root {
+    --bg-escuro: #0a0616;
+    --bg-escuro-2: #120c26;
+    --roxo: #6d28d9;
+    --roxo-forte: #5b2be0;
+    --azul-forte: #15004f;
+    --ciano: #00d4ff;
+    --rosa: #e02bb6;
+    --laranja: #e0912b;
+    --verde-escuro: #00442c;
+    --rosa-claro: #f97adb;
+    --texto-claro: #f4f5fa;
+    --texto-suave: #c9c9d6;
+    --borda-suave: rgba(255, 255, 255, .14);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg-escuro);
+    color: var(--texto-claro);
+    font-family: 'Inter', sans-serif;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Orbitron', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font-family: inherit;
+}
+
+/* ==================== BOTÕES ==================== */
+.btn {
+    display: inline-block;
+    padding: 12px 36px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, .45);
+    color: #fff;
+    font-size: .95rem;
+    cursor: pointer;
+    transition: transform .25s, box-shadow .25s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .45);
+}
+
+.btn-azul {
+    background: linear-gradient(135deg, rgba(0, 150, 190, .75), rgba(30, 60, 150, .75));
+}
+
+.btn-roxo {
+    background: linear-gradient(135deg, rgba(124, 58, 237, .85), rgba(55, 20, 120, .85));
+}
+
+.btn-solido {
+    background: var(--roxo-forte);
+    border: none;
+    font-weight: 600;
+    padding: 12px 48px;
+}
+
+/* ==================== SETAS E DOTS ==================== */
+.seta {
+    background: none;
+    border: none;
+    color: var(--texto-suave);
+    font-size: 1.6rem;
+    font-weight: 300;
+    cursor: pointer;
+    padding: 6px;
+    transition: color .25s;
+}
+
+.seta:hover {
+    color: var(--ciano);
+}
+
+.dots {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #5a5a68;
+}
+
+.dot.ativo {
+    background: #e6e6ea;
+}
+
+.centro {
+    text-align: center;
+}
+
+/* ==================== TÍTULOS DE SEÇÃO ==================== */
+.titulo-secao {
+    text-align: center;
+    font-size: clamp(1.5rem, 4vw, 2.3rem);
+    letter-spacing: 3px;
+    font-weight: 700;
+    margin-bottom: 50px;
+}
+
+/* ==================== CABEÇALHO ==================== */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 16px 6%;
+    background: rgba(10, 6, 22, .9);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--borda-suave);
+}
+
+.logo {
+    font-family: 'Orbitron';
+    font-weight: 900;
+    letter-spacing: 2px;
+    font-size: 1rem;
+    padding: 6px 16px;
+    border-radius: 6px;
+    border: 1px solid var(--borda-suave);
+    background: linear-gradient(135deg, rgba(109, 40, 217, .35), rgba(0, 212, 255, .15));
+}
+
+.nav {
+    display: flex;
+    gap: 26px;
+    flex-wrap: wrap;
+}
+
+.nav a {
+    color: var(--texto-suave);
+    font-size: .85rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color .25s;
+}
+
+.nav a:hover {
+    color: var(--ciano);
+}
+
+/* ==================== HERO ==================== */
+.hero{
+    min-height:92vh;
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    text-align:center; position:relative; overflow:hidden;
+    padding:80px 20px 110px;
+    background:
+        radial-gradient(circle at 12% 45%, rgba(0,190,190,.30), transparent 45%),
+        radial-gradient(circle at 85% 40%, rgba(124,58,237,.35), transparent 45%),
+        var(--bg-escuro);
+}
+
+.hero::before{
+    content:'';
+    position:absolute;
+    top:50%; left:50%;
+    transform:translate(-50%, -50%);
+    width:min(500px, 55vw);
+    height:min(500px, 55vw);
+    background:url('assents/imagens/SharkImage.png') center center no-repeat;
+    background-size:contain;
+    opacity:0.12;          /* ← OPACIDADE BAIXA (ajuste aqui) */
+    pointer-events:none;
+    z-index:0;
+    filter:drop-shadow(0 0 40px rgba(0,212,255,.15));
+}
+
+.hero > *{
+    position:relative;
+    z-index:1;
+}
+
+.hero h1 {
+    font-size: clamp(2.6rem, 7vw, 4.5rem);
+    font-weight: 900;
+    letter-spacing: 6px;
+}
+
+.hero h1::after {
+    content: "";
+    display: block;
+    width: min(320px, 80%);
+    height: 5px;
+    margin: 12px 0 0 auto;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--roxo-forte), var(--ciano));
+}
+
+.hero h2 {
+    margin-top: 14px;
+    font-size: clamp(1.1rem, 3vw, 1.7rem);
+    letter-spacing: 5px;
+    font-weight: 700;
+}
+
+.hero-botoes {
+    display: flex;
+    gap: 22px;
+    margin-top: 42px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.hero-marca {
+    position: absolute;
+    bottom: 34px;
+    left: 0;
+    right: 0;
+    font-family: 'Orbitron';
+    font-weight: 700;
+    font-size: clamp(1.2rem, 4vw, 2rem);
+    letter-spacing: 8px;
+    color: rgba(90, 120, 255, .15);
+    pointer-events: none;
+}
+
+/* ==================== QUEM SOMOS ==================== */
+
+.card-aluno .social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 10px;
+    background: rgba(10, 6, 22, .6);
+    border-top: 1px solid var(--borda-suave);
+}
+
+/* Estilo base para ambos os ícones */
+.card-aluno .social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .04);
+    border: 1px solid var(--borda-suave);
+    transition: transform .25s, background .25s, box-shadow .25s, border-color .25s;
+}
+
+.card-aluno .social-link:hover {
+    transform: translateY(-3px) scale(1.1);
+}
+
+
+.card-aluno .linkedin-link svg {
+    width: 18px;
+    height: 18px;
+    fill: var(--texto-suave);
+    transition: fill .25s, filter .25s;
+}
+
+.card-aluno .linkedin-link:hover {
+    background: rgba(0, 119, 181, .18);
+    border-color: #0077b5;
+    box-shadow: 0 0 10px rgba(0, 119, 181, .45);
+}
+
+.card-aluno .linkedin-link:hover svg {
+    fill: #00a0dc;
+    filter: drop-shadow(0 0 6px #00a0dc);
+}
+
+.card-aluno .github-link img {
+    width: 20px;
+    height: 20px;
+    display: block;
+    transition: filter .25s;
+}
+
+.card-aluno .github-link:hover {
+    background: rgba(255, 255, 255, .1);
+    border-color: var(--ciano);
+    box-shadow: 0 0 10px rgba(0, 212, 255, .35);
+}
+
+.card-aluno .github-link:hover img {
+    filter: drop-shadow(0 0 6px var(--ciano));
+}
+
+/* ==================== CURRÍCULOS ==================== */
+.curriculos {
+    padding: 90px 6%;
+    background: 
+        radial-gradient(circle at 80% 20%, rgba(0, 212, 255, .08), transparent 40%),
+        radial-gradient(circle at 20% 80%, rgba(124, 58, 237, .12), transparent 40%),
+        var(--bg-escuro);
+    text-align: center;
+}
+
+.curriculos-card {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: clamp(30px, 5vw, 50px);
+    border-radius: 16px;
+    border: 1px solid var(--borda-suave);
+    background: linear-gradient(160deg, rgba(124, 58, 237, .1), rgba(0, 212, 255, .05));
+    box-shadow: 0 15px 40px rgba(0, 0, 0, .4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    transition: transform .3s, box-shadow .3s;
+}
+
+.curriculos-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 50px rgba(0, 212, 255, .15);
+    border-color: rgba(0, 212, 255, .3);
+}
+
+.curriculos-texto {
+    color: var(--texto-suave);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 600px;
+}
+
+.curriculos-texto strong {
+    color: var(--texto-claro);
+    font-weight: 700;
+}
+
+/* Botão personalizado para o Drive */
+.btn-drive {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 32px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    background: linear-gradient(135deg, var(--roxo-forte), #4a1db3);
+    border: 1px solid rgba(255, 255, 255, .2);
+    color: #fff;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: transform .25s, box-shadow .25s, background .25s, border-color .25s;
+}
+
+.btn-drive:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(135deg, #7c3aed, var(--ciano));
+    box-shadow: 0 10px 25px rgba(0, 212, 255, .35);
+    border-color: var(--ciano);
+}
+
+.btn-drive svg {
+    transition: transform .25s;
+}
+
+.btn-drive:hover svg {
+    transform: translateY(2px); /* Pequena animação de "download" ao passar o mouse */
+}
+
+
+/* ==================== INSTRUTORA ==================== */
+.instrutora {
+    padding: 90px 6% 70px;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(124, 58, 237, .16), transparent 45%),
+        radial-gradient(circle at 85% 75%, rgba(0, 212, 255, .10), transparent 45%),
+        var(--bg-escuro);
+}
+
+.instrutora-card {
+    max-width: 950px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(260px, 380px) 1fr;
+    gap: clamp(28px, 5vw, 60px);
+    align-items: center;
+    padding: clamp(24px, 4vw, 48px);
+    border-radius: 16px;
+    border: 1px solid var(--borda-suave);
+    background: linear-gradient(160deg, rgba(124, 58, 237, .14), rgba(0, 212, 255, .05));
+    box-shadow: 0 15px 40px rgba(0, 0, 0, .45);
+}
+
+/* ---------- Foto (moldura com gradiente) ---------- */
+.instrutora-foto {
+    padding: 4px; /* espessura da moldura */
+    border-radius: 16px;
+    background: linear-gradient(135deg, var(--roxo-forte), var(--ciano));
+    box-shadow: 0 12px 35px rgba(91, 43, 224, .35);
+    transition: transform .3s, box-shadow .3s;
+}
+
+.instrutora-foto:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 45px rgba(0, 212, 255, .28);
+}
+
+.instrutora-foto img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: center top; /* mantém o rosto visível no recorte */
+    border-radius: 12px;
+}
+
+/* ---------- Informações ---------- */
+.instrutora-tag {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 999px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--ciano);
+    background: rgba(0, 212, 255, .08);
+    border: 1px solid rgba(0, 212, 255, .35);
+}
+
+.instrutora-nome {
+    margin-top: 18px;
+    font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+    font-weight: 900;
+    letter-spacing: 3px;
+}
+
+/* Sublinhado com gradiente (mesmo estilo do hero) */
+.instrutora-nome::after {
+    content: "";
+    display: block;
+    width: 130px;
+    height: 4px;
+    margin-top: 14px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--roxo-forte), var(--ciano));
+}
+
+.instrutora-texto {
+    margin-top: 18px;
+    max-width: 52ch;
+    color: var(--texto-suave);
+    font-size: .95rem;
+    line-height: 1.8;
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 820px) {
+    .instrutora-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .instrutora-foto {
+        width: min(320px, 100%);
+        margin: 0 auto;
+    }
+
+    .instrutora-nome::after,
+    .instrutora-texto {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+/* ========== CARROSSEL POR SETAS — QUEM SOMOS ========== */
+
+.carrossel-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 64px;   /* espaço lateral para as setas */
+}
+
+/* Janela que "corta" o trilho */
+.carrossel-viewport {
+    overflow: hidden;
+    padding: 10px 0;       /* não corta a sombra dos cards */
+}
+
+/* Trilho que desliza */
+.carrossel-track {
+    display: flex;
+    gap: 24px;
+    transition: transform .55s cubic-bezier(.22, .61, .36, 1);
+    will-change: transform;
+}
+
+/* Degradê nas laterais (mais suave agora) */
+.carrossel-wrapper::before,
+.carrossel-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 90px;
+    z-index: 5;
+    pointer-events: none;
+}
+.carrossel-wrapper::before {
+    left: 0;
+    background: linear-gradient(90deg, var(--bg-escuro), transparent);
+}
+.carrossel-wrapper::after {
+    right: 0;
+    background: linear-gradient(-90deg, var(--bg-escuro), transparent);
+}
+
+/* ---------- Setas ---------- */
+.seta-carrossel {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(18, 12, 38, .85);
+    border: 1px solid var(--borda-suave);
+    color: var(--texto-claro);
+    cursor: pointer;
+    transition: transform .25s, background .25s, color .25s, box-shadow .25s;
+    backdrop-filter: blur(4px);
+}
+
+.seta-carrossel:hover {
+    background: linear-gradient(135deg, var(--roxo-forte), var(--ciano));
+    color: #fff;
+    box-shadow: 0 8px 22px rgba(91, 43, 224, .45);
+    transform: translateY(-50%) scale(1.08);
+}
+
+.seta-carrossel:active {
+    transform: translateY(-50%) scale(.95);
+}
+
+.seta-esquerda { left: 8px; }
+.seta-direita  { right: 8px; }
+
+/* ---------- Dots ---------- */
+.carrossel-wrapper + .dots {
+    margin-top: 26px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #5a5a68;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background .25s, transform .25s;
+}
+
+.dot:hover { transform: scale(1.25); }
+
+.dot.ativo {
+    background: #e6e6ea;
+    transform: scale(1.15);
+}
+
+/* ========== RESPONSIVO ========== */
+@media (max-width: 900px) {
+    .carrossel-wrapper  { padding: 20px 52px; }
+    .seta-carrossel     { width: 42px; height: 42px; }
+    .carrossel-wrapper::before,
+    .carrossel-wrapper::after { width: 60px; }
+}
+
+@media (max-width: 520px) {
+    .carrossel-wrapper  { padding: 16px 44px; }
+    .seta-carrossel     { width: 38px; height: 38px; }
+    .carrossel-wrapper::before,
+    .carrossel-wrapper::after { width: 40px; }
+}
+
+.card-aluno {
+    flex-shrink: 0;
+    width: 220px;
+    text-align: center;
+    border-radius: 14px;
+    border: 1px solid var(--borda-suave);
+    background: linear-gradient(160deg, rgba(124, 58, 237, .12), rgba(0, 212, 255, .06));
+    overflow: hidden;
+    transition: transform .3s, box-shadow .3s;
+}
+
+.card-aluno:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 14px 35px rgba(91, 43, 224, .4);
+    border-color: rgba(0, 212, 255, .3);
+}
+
+.card-aluno .foto-wrap {
+    width: 100%;
+    aspect-ratio: 4/5;
+    overflow: hidden;
+    position: relative;
+}
+
+.card-aluno .foto-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform .4s;
+}
+
+.card-aluno:hover .foto-wrap img {
+    transform: scale(1.08);
+}
+
+.card-aluno .nome {
+    padding: 14px 12px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: .82rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--texto-claro);
+    background: rgba(10, 6, 22, .6);
+    border-top: 1px solid var(--borda-suave);
+}
+
+/* Placeholder caso a imagem não carregue */
+.card-aluno .placeholder-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    opacity: .25;
+    color: var(--ciano);
+}
+
+/* ========== RESPONSIVO CARROSSEL ========== */
+@media (max-width: 900px) {
+    .card-aluno {
+        width: 180px;
+    }
+
+    .carrossel-wrapper::before,
+    .carrossel-wrapper::after {
+        width: 80px;
+    }
+}
+
+@media (max-width: 520px) {
+    .card-aluno {
+        width: 150px;
+    }
+
+    .carrossel-wrapper::before,
+    .carrossel-wrapper::after {
+        width: 50px;
+    }
+}
+
+.quem-somos {
+    padding: 90px 6%;
+    text-align: center;
+    background: var(--bg-escuro);
+}
+
+.grid-alunos {
+    max-width: 1050px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.card-imagem {
+    background: linear-gradient(160deg, #eceef2, #c9c9d2);
+    border-radius: 8px;
+    aspect-ratio: 4/5;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .35);
+    transition: transform .3s, box-shadow .3s;
+    overflow: hidden;
+    /* Garante que a imagem não ultrapasse os cantos arredondados */
+    position: relative;
+    /* Para posicionamento da imagem */
+}
+
+.card-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Cobre todo o espaço mantendo a proporção */
+    object-position: center;
+    /* Centraliza a imagem */
+    display: block;
+    transition: transform .3s;
+    /* Transição suave para o hover */
+}
+
+.card-imagem:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 30px rgba(91, 43, 224, .35);
+}
+
+.card-imagem:hover img {
+    transform: scale(1.05);
+    /* Zoom suave na imagem ao passar o mouse */
+}
+
+/* ==========================================================
+   NOSSOS PROJETOS — nova estrutura:
+   [ícone | título/descrição] + fileira com imagens
+   ========================================================== */
+.projetos {
+    padding: 90px 6%;
+    background: linear-gradient(180deg, #4b4460 0%, #17112c 12%, var(--bg-escuro) 40%);
+}
+
+.lista-projetos {
+    max-width: 1050px;
+    margin: 0 auto;
+    display: grid;
+    gap: 60px;
+}
+
+.projeto {
+    display: grid;
+    gap: 22px;
+}
+
+/* Cabeçalho do projeto */
+.projeto-info {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 22px 28px;
+    border-radius: 12px;
+    border: 1px solid var(--borda-suave);
+    background: linear-gradient(135deg, rgba(124, 58, 237, .16), rgba(0, 212, 255, .06));
+}
+
+.projeto-icone {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--roxo-forte), var(--ciano));
+    box-shadow: 0 6px 18px rgba(0, 22, 163, 0.4);
+}
+
+.projeto-icone-BS {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--rosa-claro), var(--rosa));
+    box-shadow: 0 6px 18px rgba(0, 22, 163, 0.4);
+}
+
+.projeto-icone-ZL {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--texto-claro), var(--borda-suave));
+    box-shadow: 0 6px 18px rgba(0, 22, 163, 0.4);
+}
+
+.projeto-icone-SF {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--verde-escuro), var(--laranja));
+    box-shadow: 0 6px 18px rgba(0, 22, 163, 0.4);
+}
+
+.projeto-icone-CS {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--roxo-forte), var(--rosa));
+    box-shadow: 0 6px 18px rgba(0, 22, 163, 0.4);
+}
+
+.projeto-icone-SB {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--azul-forte), var(--ciano));
+    box-shadow: 0 6px 18px rgba(0, 22, 163, 0.4);
+}
+
+.projeto-texto {
+    flex: 1;
+}
+
+.projeto-texto h3 {
+    font-size: 1rem;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    color: #fff;
+}
+
+.projeto-texto p {
+    color: var(--texto-suave);
+    font-size: .9rem;
+    line-height: 1.6;
+}
+
+/* Fileira com 4 imagens do projeto */
+.projeto-galeria {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+/* Quando a galeria tem apenas 2 imagens */
+.projeto-galeria:has(.card-imagem:nth-child(2):last-child) {
+    grid-template-columns: repeat(2, minmax(280px, 380px));
+    justify-content: center;
+    gap: 30px;
+}
+
+/* Quando a galeria tem apenas 2 imagens - cards maiores */
+.projeto-galeria:has(.card-imagem:nth-child(2):last-child) .card-imagem {
+    aspect-ratio: 16/10;
+}
+
+/* Quando a galeria tem apenas 1 imagem */
+.projeto-galeria:has(.card-imagem:only-child) {
+    grid-template-columns: minmax(300px, 500px);
+    justify-content: center;
+}
+
+/* Quando a galeria tem apenas 1 imagem - card maior */
+.projeto-galeria:has(.card-imagem:only-child) .card-imagem {
+    aspect-ratio: 16/9;
+}
+
+.projeto-galeria .card-imagem {
+    aspect-ratio: 4/3;
+    width: 100%;
+}
+
+.projeto-galeria .card-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+/* ==================== SOBRE O CURSO ==================== */
+.curso {
+    padding: 90px 6%;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(124, 58, 237, .18), transparent 50%),
+        var(--bg-escuro);
+}
+
+.painel-curso {
+    max-width: 950px;
+    margin: 0 auto 45px;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 45px;
+    padding: 45px;
+    border-radius: 16px;
+    border: 1px solid var(--borda-suave);
+    background: linear-gradient(160deg, rgba(124, 58, 237, .14), rgba(0, 212, 255, .05));
+    box-shadow: 0 15px 40px rgba(0, 0, 0, .45);
+}
+
+.painel-curso h3 {
+    letter-spacing: 2px;
+    font-size: 1.15rem;
+    margin-bottom: 18px;
+}
+
+.painel-curso p {
+    color: var(--texto-suave);
+    line-height: 1.8;
+    font-size: .95rem;
+    margin-bottom: 16px;
+}
+
+.curso-lista {
+    list-style: none;
+    display: grid;
+    gap: 12px;
+    align-content: start;
+}
+
+.curso-lista li {
+    padding: 12px 18px;
+    border-radius: 10px;
+    border: 1px solid var(--borda-suave);
+    background: rgba(10, 6, 22, .55);
+    color: var(--texto-suave);
+    font-size: .9rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.curso-lista li::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--roxo-forte), var(--ciano));
+    flex-shrink: 0;
+}
+
+.curso-lista strong {
+    color: var(--texto-claro);
+}
+
+/* ==================== CARROSSEL DA GALERIA ==================== */
+.carrossel-galeria{
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Janela que "corta" o trilho */
+.galeria-viewport{
+    flex: 1;
+    overflow: hidden;
+    padding: 10px 0; /* não corta a sombra dos cards */
+}
+
+/* Trilho que desliza */
+.galeria-track{
+    display: flex;
+    gap: 26px;
+    transition: transform .55s cubic-bezier(.22, .61, .36, 1);
+}
+
+/* 3 imagens visíveis no desktop */
+.galeria-track .card-imagem{
+    flex: 0 0 calc((100% - 52px) / 3);
+    aspect-ratio: 4/3;
+    max-width: none;
+}
+
+.galeria .dots{ margin-top: 34px; }
+.galeria .dot{ cursor: pointer; transition: transform .25s; }
+.galeria .dot:hover{ transform: scale(1.25); }
+
+
+/* ==================== FOOTER ==================== */
+.footer {
+    padding: 36px 6%;
+    background: var(--bg-escuro);
+    border-top: 1px solid var(--borda-suave);
+    text-align: center;
+    color: #8a8a9a;
+    font-size: .85rem;
+    letter-spacing: 1px;
+}
+
+.footer strong {
+    color: var(--texto-claro);
+    font-family: 'Orbitron';
+}
+
+/* ==================== RESPONSIVO ==================== */
+@media (max-width: 900px) {
+    .grid-alunos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .projeto-galeria {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .projeto-info {
+        flex-wrap: wrap;
+    }
+
+    .painel-curso {
+        grid-template-columns: 1fr;
+    }
+
+    .carrossel-galeria {
+        flex-direction: column;
+    }
+
+    .carrossel-galeria .seta {
+        display: none;
+    }
+
+    .carrossel-galeria .card-imagem {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 520px) {
+    .grid-alunos {
+        grid-template-columns: 1fr;
+    }
+
+    .projeto-galeria {
+        grid-template-columns: 1fr;
+    }
+}
