@@ -13,8 +13,6 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@400;500;700&display=swap"
         rel="stylesheet">
-
-
 </head>
 
 <body>
@@ -31,10 +29,38 @@
         </nav>
     </header>
 
-    <!-- ==================== BLOCO FINAL: GALERIA DE FOTOS ==================== -->
+    <!-- ==================== BLOCO: GALERIA DE FOTOS ==================== -->
     <section class="galeria" id="galeria">
         <h2 class="titulo-secao">GALERIA DE FOTOS</h2>
 
+        <div class="carrossel-galeria">
+            <button class="seta seta-anterior" aria-label="Anterior">&lt;</button>
+
+            <div class="galeria-viewport">
+                <div class="galeria-track">
+                    <div class="card-imagem"><img src="assents/galeria/Ruthkkkj.png" alt="Turma reunida"></div>
+                    <div class="card-imagem"><img src="assents/galeria/Elias_Richard.png" alt="Entrega de certificados">
+                    </div>
+                    <div class="card-imagem"><img src="assents/galeria/NN.png" alt="Coffee break"></div>
+                    <!-- Adicione/remova imagens aqui — o JS se adapta sozinho -->
+                    <div class="card-imagem"><img src="assents/galeria/Elevador.png" alt="Aula"></div>
+                    <div class="card-imagem"><img src="assents/galeria/AdryDeNovo.png" alt="PSP"></div>
+                    <div class="card-imagem"><img src="assents/galeria/Joana.png" alt="Adry"></div>
+                </div>
+            </div>
+
+            <button class="seta seta-proxima" aria-label="Próximo">&gt;</button>
+        </div>
+
+        <!-- Os dots são criados automaticamente pelo JS -->
+        <div class="dots"></div>
+    </section>
+
+    <!-- ==================== BLOCO: GALERIA DE FOTOS 2 ==================== -->
+
+
+    <section class="galeria" id="galeria-2">
+    
         <div class="carrossel-galeria">
             <button class="seta seta-anterior" aria-label="Anterior">&lt;</button>
 
@@ -58,7 +84,6 @@
         <div class="dots"></div>
     </section>
 
-
     <!-- ==================== FOOTER ==================== -->
     <footer class="footer">
         <p><strong>TURMA 136</strong> — © 2026 Todos os direitos reservados</p>
@@ -66,67 +91,76 @@
 
     <script>
         // ==================== CARROSSEL DA GALERIA ====================
-        const track = document.querySelector('.galeria-track');
-        const cards = Array.from(track.children);
-        const btnAnterior = document.querySelector('.seta-anterior');
-        const btnProxima = document.querySelector('.seta-proxima');
-        const dotsWrap = document.querySelector('.galeria .dots');
+        document.querySelectorAll('.galeria').forEach((secaoGaleria) => {
+            const track = secaoGaleria.querySelector('.galeria-track');
+            if (!track) return;
 
-        let indice = 0;
+            const cards = Array.from(track.children);
+            const btnAnterior = secaoGaleria.querySelector('.seta-anterior');
+            const btnProxima = secaoGaleria.querySelector('.seta-proxima');
+            const dotsWrap = secaoGaleria.querySelector('.dots');
 
-        // Quantas imagens aparecem por vez (acompanha o CSS responsivo)
-        const visiveis = () => {
-            if (window.innerWidth <= 520) return 1;
-            if (window.innerWidth <= 900) return 2;
-            return 3;
-        };
+            let indice = 0;
 
-        const maxIndice = () => Math.max(0, cards.length - visiveis());
+            // Quantas imagens aparecem por vez (acompanha o CSS responsivo)
+            const visiveis = () => {
+                if (window.innerWidth <= 560) return 1;
+                if (window.innerWidth <= 900) return 2;
+                return 3;
+            };
 
-        // Desliza o trilho até o índice atual e atualiza o dot ativo
-        function mover() {
-            const gap = parseFloat(getComputedStyle(track).gap) || 0;
-            const passo = cards[0].getBoundingClientRect().width + gap;
-            track.style.transform = `translateX(${-indice * passo}px)`;
+            const maxIndice = () => Math.max(0, cards.length - visiveis());
 
-            dotsWrap.querySelectorAll('.dot').forEach((d, i) =>
-                d.classList.toggle('ativo', i === indice)
-            );
-        }
+            // Desliza o trilho até o índice atual e atualiza o dot ativo
+            function mover() {
+                const gap = parseFloat(getComputedStyle(track).gap) || 0;
+                const passo = cards[0] ? (cards[0].getBoundingClientRect().width + gap) : 0;
+                track.style.transform = `translateX(${-indice * passo}px)`;
 
-        // Cria um dot para cada "página" do carrossel
-        function criarDots() {
-            dotsWrap.innerHTML = '';
-            for (let i = 0; i <= maxIndice(); i++) {
-                const dot = document.createElement('span');
-                dot.className = 'dot';
-                dot.addEventListener('click', () => { indice = i; mover(); });
-                dotsWrap.appendChild(dot);
+                if (dotsWrap) {
+                    dotsWrap.querySelectorAll('.dot').forEach((d, i) =>
+                        d.classList.toggle('ativo', i === indice)
+                    );
+                }
             }
-        }
 
-        btnProxima.addEventListener('click', () => {
-            indice = indice >= maxIndice() ? 0 : indice + 1; // volta ao início no fim
-            mover();
-        });
+            // Cria um dot para cada "página" do carrossel
+            function criarDots() {
+                if (!dotsWrap) return;
+                dotsWrap.innerHTML = '';
+                for (let i = 0; i <= maxIndice(); i++) {
+                    const dot = document.createElement('span');
+                    dot.className = 'dot';
+                    dot.setAttribute('aria-label', `Ir para a página ${i + 1}`);
+                    dot.addEventListener('click', () => { indice = i; mover(); });
+                    dotsWrap.appendChild(dot);
+                }
+            }
 
-        btnAnterior.addEventListener('click', () => {
-            indice = indice <= 0 ? maxIndice() : indice - 1; // vai ao fim no início
-            mover();
-        });
+            if (btnProxima) {
+                btnProxima.addEventListener('click', () => {
+                    indice = indice >= maxIndice() ? 0 : indice + 1; // volta ao início no fim
+                    mover();
+                });
+            }
 
-        // Recalcula ao redimensionar a janela
-        window.addEventListener('resize', () => {
-            indice = Math.min(indice, maxIndice());
+            if (btnAnterior) {
+                btnAnterior.addEventListener('click', () => {
+                    indice = indice <= 0 ? maxIndice() : indice - 1; // vai ao fim no início
+                    mover();
+                });
+            }
+
+            // Recalcula ao redimensionar a janela
+            window.addEventListener('resize', () => {
+                indice = Math.min(indice, maxIndice());
+                criarDots();
+                mover();
+            });
+
             criarDots();
             mover();
         });
-
-        criarDots();
-        mover();
-
-        // Opcional: passar sozinho a cada 5s (descomente se quiser)
-        // setInterval(() => btnProxima.click(), 5000);
     </script>
 
 </body>
